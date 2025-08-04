@@ -1,5 +1,6 @@
-package com.matthew.bookdb.model;
+package com.matthew.bookdb.mysql.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +15,7 @@ public class Book {
     private String author;
 
     @Column(name = "published_year")
+    @JsonProperty("published_year")
     private Integer publishedYear;
 
     private Double price;
