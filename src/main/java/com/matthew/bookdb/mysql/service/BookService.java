@@ -17,8 +17,14 @@ public class BookService {
     private BookRepository bookRepository;
 
     public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return bookRepository.getBooksCustom();
     }
+
+    //getting books by author
+    public List<Book> getBookByAuthor(String author){
+        return bookRepository.findBooksByAuthor(author);
+    }
+
 
     public Optional<Book> getBookById(Integer id) {
         return bookRepository.findById(id);
@@ -45,5 +51,9 @@ public class BookService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book with id " + id + " not found.");
         }
+    }
+
+    public List<Book> getBooksByAuthor(String author) {
+        return bookRepository.findBooksByAuthor(author);
     }
 }

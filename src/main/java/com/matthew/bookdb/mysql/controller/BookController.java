@@ -14,7 +14,7 @@ import java.util.Optional;
 public class BookController {
 
     @Autowired
-    private BookService bookService;
+    BookService bookService;
 
     @GetMapping("/books")
     public List<Book> getAllBooks() {
@@ -39,5 +39,10 @@ public class BookController {
     @DeleteMapping("books/{id}")
     public ResponseEntity<String> deleteBook(@PathVariable Integer id) {
         return bookService.deleteBook(id);
+    }
+
+    @GetMapping("books/author/{author}")
+    public List<Book> getBookByAuthor(@PathVariable(name = "author") String author){
+        return bookService.getBookByAuthor(author);
     }
 }

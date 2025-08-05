@@ -29,10 +29,10 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col">
-                        <input type="text" id="book-search" class="form-control" placeholder="Search by title or author">
+                        <input type="text" id="book-search" class="form-control" placeholder="Enter author name">
                     </div>
                     <div class="col">
-                        <button class="btn btn-primary" onclick="searchBooks()">Search</button>
+                        <button class="btn btn-primary" onclick="searchBooksByAuthor()">Search by Author</button>
                         <button class="btn btn-secondary" onclick="getAllBooks()">Get All Books</button>
                     </div>
                 </div>
@@ -175,9 +175,13 @@
             });
         }
 
-        async function searchBooks() {
-            const query = document.getElementById('book-search').value;
-            const response = await fetch(`/api/v1/books/search?query=${query}`);
+        async function searchBooksByAuthor() {
+            const author = document.getElementById('book-search').value;
+            if (!author) {
+                alert('Please enter an author name.');
+                return;
+            }
+            const response = await fetch(`/api/v1/books/author/${encodeURIComponent(author)}`);
             const books = await response.json();
             const tableBody = document.getElementById('book-table-body');
             tableBody.innerHTML = '';

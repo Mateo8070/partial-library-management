@@ -93,7 +93,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
 }
 ```
 
-## 4. `BookController.java` (Controller)
+## 4. `
 
 The REST controller for handling book-related API requests.
 
@@ -112,7 +112,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/")
-public class BookController {
+public class BooksController {
 
     @Autowired
     private BookRepository bookRepository;
