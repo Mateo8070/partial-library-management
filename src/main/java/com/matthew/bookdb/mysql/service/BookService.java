@@ -1,39 +1,34 @@
-package com.matthew.bookdb.controller;
+package com.matthew.bookdb.mysql.service;
 
 import com.matthew.bookdb.mysql.model.Book;
-import com.matthew.bookdb.repository.BookRepository;
+import com.matthew.bookdb.mysql.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/v1/")
-public class BookController {
+@Service
+public class BookService {
 
     @Autowired
     private BookRepository bookRepository;
 
-    @GetMapping("/books")
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
-    @GetMapping("books/{id}")
-    public Optional<Book> getBookById(@PathVariable Integer id) {
+    public Optional<Book> getBookById(Integer id) {
         return bookRepository.findById(id);
     }
 
-    @PostMapping
-    public Book createBook(@RequestBody Book book) {
+    public Book createBook(Book book) {
         return bookRepository.save(book);
     }
 
-    @PutMapping("books/{id}")
-    public Book updateBook(@PathVariable Integer id, @RequestBody Book bookDetails) {
+    public Book updateBook(Integer id, Book bookDetails) {
         return bookRepository.findById(id).map(book -> {
             book.setTitle(bookDetails.getTitle());
             book.setAuthor(bookDetails.getAuthor());
@@ -43,8 +38,7 @@ public class BookController {
         }).orElseThrow(() -> new RuntimeException("Book not with id " + id));
     }
 
-    @DeleteMapping("books/{id}")
-    public ResponseEntity<String> deleteBook(@PathVariable Integer id) {
+    public ResponseEntity<String> deleteBook(Integer id) {
         if (bookRepository.existsById(id)) {
             bookRepository.deleteById(id);
             return ResponseEntity.ok("Book with id " + id + " deleted successfully.");
