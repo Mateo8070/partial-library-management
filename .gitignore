@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Ignore notes
+*.md
+
+# Ignore sensitive configuration
+/src/main/resources/application.properties

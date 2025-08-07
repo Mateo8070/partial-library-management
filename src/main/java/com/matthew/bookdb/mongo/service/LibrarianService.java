@@ -35,7 +35,7 @@ public class LibrarianService {
                 .collect(Collectors.toSet())
                 .stream().toList();
 
-        return new ResponseDTO(librarianDTOList.size(), librarianDTOList, "success");
+        return new ResponseDTO( "success",librarianDTOList, librarianDTOList.size());
     }
 
     public ResponseEntity<?> createLibrarian(Librarian librarian) {

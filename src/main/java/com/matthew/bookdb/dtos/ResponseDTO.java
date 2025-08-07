@@ -7,21 +7,10 @@ public class ResponseDTO {
     List<LibrarianDTO> data;
     int count;
 
-    public ResponseDTO(int count, List<LibrarianDTO> data, String status) {
-        this.count = count;
-        this.data= data;
+
+    public ResponseDTO (String status, List<LibrarianDTO> data, int count) {
         this.status = status;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public List<LibrarianDTO> getData() {
-        return data;
-    }
-
-    public int getCount() {
-        return count;
+        this.data = data;
+        this.count = count;
     }
 }
