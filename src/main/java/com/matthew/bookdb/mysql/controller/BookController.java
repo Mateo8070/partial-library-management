@@ -2,7 +2,6 @@ package com.matthew.bookdb.mysql.controller;
 
 import com.matthew.bookdb.mysql.model.Book;
 import com.matthew.bookdb.mysql.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

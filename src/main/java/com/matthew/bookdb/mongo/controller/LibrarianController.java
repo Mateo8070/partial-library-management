@@ -49,6 +49,7 @@ public class LibrarianController {
         return librarianService.searchByName(name);
     }
 
+    
     //updating a librarian
     @PutMapping("/{id}")
     public Librarian updateLibrarian(@PathVariable String id, @RequestBody Librarian librarianDetails) {

@@ -50,6 +50,7 @@ public class Book {
 
     public Double getPrice () {
         return price;
+
     }
 
 }
