@@ -34,6 +34,7 @@ build/
 
 # Ignore notes
 *.md
+.env
 
 # Ignore sensitive configuration
 /src/main/resources/application.properties

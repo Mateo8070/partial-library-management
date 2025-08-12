@@ -1,3 +1,24 @@
 body {
     background-color: #f8f9fa;
 }
+
+.custom-search-select {
+    width: auto; 
+    flex-grow: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    text-indent: -9999px;
+    appearance: none; 
+    padding-right: 1.5rem;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: 16px 12px;
+}
+
+/* Adjust for focus state */
+.custom-search-select:focus {
+    text-indent: -9999px;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}

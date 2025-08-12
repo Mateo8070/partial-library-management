@@ -48,9 +48,10 @@ public class BookController {
         return bookService.deleteBook(id);
     }
 
-    //getting book by author
-    @GetMapping("books/author/{author}")
-    public List<Book> getBookByAuthor(@PathVariable(name = "author") String author){
-        return bookService.getBookByAuthor(author);
+
+    //searching a book by partial author or title
+    @GetMapping("/books/search")
+    public List<Book> searchBooks(@RequestParam("query") String query, @RequestParam("type") String type) {
+        return bookService.searchBooks(query, type);
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,11 +21,17 @@ public class BookService {
         return bookRepository.getBooksCustom();
     }
 
-    //getting books by author
-    public List<Book> getBookByAuthor(String author){
-        return bookRepository.findBooksByAuthor(author);
-    }
+    public List<Book> searchBooks(String query, String type) {
+        if (query == null || query.trim().isEmpty()) {
+            return Collections.emptyList();
+        }
 
+        return switch (type) {
+            case "title" -> bookRepository.findByTitleContainingIgnoreCase(query);
+            case "author" -> bookRepository.findByAuthorContainingIgnoreCase(query);
+            default -> Collections.emptyList();
+        };
+    }
 
     public Optional<Book> getBookById(Integer id) {
         return bookRepository.findById(id);
@@ -51,9 +58,5 @@ public class BookService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Book with id " + id + " not found.");
         }
-    }
-
-    public List<Book> getBooksByAuthor(String author) {
-        return bookRepository.findBooksByAuthor(author);
     }
 }

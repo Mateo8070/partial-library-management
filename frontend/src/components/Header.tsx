@@ -1,8 +1,15 @@
-import React from 'react';
+interface HeaderProps {
+    searchTerm: string;
+    setSearchTerm: (term: string) => void;
+    handleSearch: (e: React.FormEvent) => void;
+    openModal: () => void;
+    searchType: 'title' | 'author';
+    setSearchType: (type: 'title' | 'author') => void;
+}
 
-const Header = ({ searchTerm, setSearchTerm, handleSearch, openModal }) => {
+const Header: React.FC<HeaderProps> = ({ searchTerm, setSearchTerm, handleSearch, openModal, searchType, setSearchType }) => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4 sticky-top" style={{zIndex: 1040}}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">BookManager</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,16 +24,32 @@ const Header = ({ searchTerm, setSearchTerm, handleSearch, openModal }) => {
                             <a className="nav-link" href="/">All Books</a>
                         </li>
                     </ul>
-                    <form className="d-flex" onSubmit={handleSearch}>
-                        <input 
-                            className="form-control me-2" 
-                            type="search" 
-                            placeholder="Search by author..." 
-                            aria-label="Search"
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
+                    <form className="d-flex">
+                        <div className="input-group me-2">
+                            <input 
+                                className="form-control" 
+                                type="search" 
+                                placeholder={`Search by ${searchType}...`} 
+                                aria-label="Search"
+                                value={searchTerm}
+                                onChange={(e) => {
+                                    setSearchTerm(e.target.value);
+                                    handleSearch(e as unknown as React.FormEvent); 
+                                }}
+                            />
+                            <select 
+                                className="form-select custom-search-select" 
+                                aria-label="Search type"
+                                value={searchType}
+                                onChange={(e) => {
+                                    setSearchType(e.target.value as 'title' | 'author');
+                                    handleSearch(e as unknown as React.FormEvent); 
+                                }}
+                            >
+                                <option value="author">Author</option>
+                                <option value="title">Title</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
             </div>
