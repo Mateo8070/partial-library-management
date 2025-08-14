@@ -33,7 +33,6 @@ build/
 .vscode/
 
 # Ignore note
-.env
 
 # Ignore sensitive configuration
 /src/main/resources/application.properties
