@@ -39,8 +39,6 @@ Before running the application, ensure you have the following installed on your 
 *   **Node.js v22.18.0 or higher**
 *   **npm 10.9.3 or higher**
 *   **Maven 3.8.7 or higher**
-*   **MongoDB Community Server** (running locally or accessible remotely)
-    *   **Note:** This project uses MongoDB for data persistence, not MySQL. Please ensure MongoDB is running and accessible.
 
 ## Setup Instructions
 
@@ -50,7 +48,7 @@ Follow these steps to get the application up and running on your local machine.
 
 ```bash
 git clone <repository-url>
-cd partial-library-management-master
+cd partial-library-management
 ```
 
 ### 2. Start MongoDB
