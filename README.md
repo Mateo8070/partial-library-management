@@ -1,6 +1,7 @@
 # Book Management Application
 
 This is a full-stack application for managing a collection of books. It allows users to view, add, edit, and delete book entries, and search for books by title or author.
+The API key exposure is intentional (testing pusrposes)
 
 
 ## Features
